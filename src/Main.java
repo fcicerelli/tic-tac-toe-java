@@ -10,19 +10,24 @@ public class Main {
   public static void emptyBoard() {
     for(int i = 0; i < 3; i++) {
       for(int j = 0; j < 3; j++) {
-        tt[i][j] = " _ ";
+        tt[i][j] = "   ";
       }
     }
   }
 
   public static void drawBoard() {
     for(int i = 0; i < 3;i++) {
-      System.out.print("|");
+      //System.out.print("|");
       for(int j = 0; j < 3; j++) {
         System.out.print(tt[i][j]);
-        System.out.print("|");
+        if(j<2) {
+          System.out.print("|");
+        }
       }
       System.out.println();
+      if(i<2) {
+        System.out.println("-----------");
+      }
     }
   }
 
@@ -37,7 +42,7 @@ public class Main {
       System.out.println("Enter the column: (1-3)");
       int column = scanner.nextInt();
 
-      if (tt[row-1][column-1].equals(" _ ")) {
+      if (tt[row-1][column-1].equals("   ")) {
         tt[row-1][column-1] = " " + playerX + " ";
       } else {
         System.out.println("You cannot play that box");
@@ -60,7 +65,7 @@ public class Main {
       System.out.println("Enter the column: (1-3)");
       int column = scanner.nextInt();
 
-      if (tt[row-1][column-1].equals(" _ ")) {
+      if (tt[row-1][column-1].equals("   ")) {
         tt[row-1][column-1] = " " + playerO + " ";
       } else {
         System.out.println("You cannot play that box");
@@ -92,7 +97,7 @@ public class Main {
       }
     }
 
-    //emptyBoard();
-    //drawBoard();
+    emptyBoard();
+    drawBoard();
   }
 }
