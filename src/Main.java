@@ -26,7 +26,7 @@ public class Main {
       }
       System.out.println();
       if(i<2) {
-        System.out.println("-----------");
+        System.out.println("---+---+---");
       }
     }
   }
@@ -66,7 +66,7 @@ public class Main {
       int column = scanner.nextInt();
 
       if (tt[row-1][column-1].equals("   ")) {
-        tt[row-1][column-1] = " " + playerO + " ";
+        tt[row-1][column-1] = " " + playerX + " ";
       } else {
         System.out.println("You cannot play that box");
         continue;
@@ -91,13 +91,26 @@ public class Main {
         System.out.println("Exitting...");
         break;
       } else if (quit.equals("n")) {
-        System.out.println("you press 'n");
+
+        emptyBoard();
+        drawBoard();
+
+        while(true) {
+          if (!(tt[0][0].equals("   ")) && !(tt[0][1].equals("   ")) && !(tt[0][2].equals("   ")) &&
+              !(tt[1][0].equals("   ")) && !(tt[1][1].equals("   ")) && !(tt[1][2].equals("   ")) &&
+              !(tt[2][0].equals("   ")) && !(tt[2][1].equals("   ")) && !(tt[2][2].equals("   "))) {
+            System.out.println("Game Over!!!");
+            break;
+          }
+
+          playerXTurn();
+          System.out.println();
+
+        }
       } else {
         System.out.println("Invalid Character");
+        continue;
       }
-    }
-
-    emptyBoard();
-    drawBoard();
-  }
+    } // end while
+  } // end main
 }
